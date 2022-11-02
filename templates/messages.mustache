@@ -1,0 +1,526 @@
+{{#data}}
+<div class="nk-content ">
+    <style>
+        .messageView {
+            padding: 2rem 2.5rem !important;
+        }
+
+        .red {
+            color: #e85347 !important;
+        }
+    </style>
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-ibx">
+                    <div class="nk-ibx-aside" data-content="inbox-aside" data-toggle-overlay="true" data-toggle-screen="lg">
+                        <div class="nk-ibx-head">
+                            <h5 class="mb-0">Inbox</h5>
+                            <a href="#" class="link link-primary" id="composeMessage" data-toggle="modal" data-target="#compose-mail"><em class="icon ni ni-plus"></em> <span>Compose Email</span></a>
+                        </div>
+                        <div class="nk-ibx-nav" data-simplebar>
+                            <ul class="messageType nk-ibx-menu">
+                                <li class="active" data="inbox">
+                                    <a class="nk-ibx-menu-item" href="#">
+                                        <em class="icon ni ni-inbox"></em>
+                                        <span class="nk-ibx-menu-text">Inbox</span>
+                                        <span class="badge badge-pill badge-light">{{inboxCount}}</span>
+                                    </a>
+                                </li>
+                                <li data="draft">
+                                    <a class="nk-ibx-menu-item" href="#">
+                                        <em class="icon ni ni-edit"></em>
+                                        <span class="nk-ibx-menu-text">Drafts</span>
+                                        <span class="badge badge-pill badge-light">{{draftCount}}</span>
+                                    </a>
+                                </li>
+                                <li data="sent">
+                                    <a class="nk-ibx-menu-item" href="#">
+                                        <em class="icon ni ni-send"></em>
+                                        <span class="nk-ibx-menu-text">Sent</span>
+                                        <span class="badge badge-pill badge-light">{{sentCount}}</span>
+                                    </a>
+                                </li>
+                                <li data="spam">
+                                    <a class="nk-ibx-menu-item" href="#">
+                                        <em class="icon ni ni-report"></em>
+                                        <span class="nk-ibx-menu-text">Spam</span>
+                                    </a>
+                                </li>
+                                <li data="trash">
+                                    <a class="nk-ibx-menu-item" href="#">
+                                        <em class="icon ni ni-trash"></em>
+                                        <span class="nk-ibx-menu-text">Trash</span>
+                                        <span class="badge badge-pill badge-danger badge-dim">{{trashCount}}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="nk-ibx-body bg-white">
+                        <div class="nk-ibx-head d-flex flex-row-reverse">
+                            <ul class="nk-ibx-head-tools g-1">
+                                <li class="mr-n1 d-lg-none"><a href="#" class="btn btn-trigger btn-icon toggle" data-target="inbox-aside"><em class="icon ni ni-menu-alt-r"></em></a></li>
+                            </ul>
+                        </div>
+                        <div id="inbox">
+                            {{#hasInbox}}
+                            <div class="nk-ibx-list" data-simplebar>
+                                {{#inboxMessages}}
+                                <div class="nk-ibx-item">
+                                    <a href="#" id="{{id}}" class="messageItem nk-ibx-link"></a>
+                                    <div class="nk-ibx-item-elem nk-ibx-item-user">
+                                        <div class="user-card">
+                                            <div class="user-avatar">
+                                                {{#hasPhoto}}
+                                                <img src={{userPhoto}}>
+                                                {{/hasPhoto}}
+                                                {{^hasPhoto}}
+                                                <span>{{userPhoto}}</span>
+                                                {{/hasPhoto}}
+                                            </div>
+                                            <div class="user-name">
+                                                <div class="lead-text {{isNew}}">{{department}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nk-ibx-item-elem nk-ibx-item-fluid">
+                                        <div class="nk-ibx-context-group">
+                                            <div class="nk-ibx-context">
+                                                <span class="nk-ibx-context-text">
+                                                    <span class="heading {{isNew}}">{{title}}</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nk-ibx-item-elem">
+                                        <div class="sub-text {{isNew}}">{{messageDate}}</div>
+                                    </div>
+                                    <div class="nk-ibx-item-elem nk-ibx-item-tools">
+                                        <div class="ibx-actions">
+                                            <ul class="ibx-actions-hidden gx-1">
+                                                <li><a href="#" id="{{id}}" data="receiver" class="deleteMessage btn btn-sm btn-icon btn-trigger" data-toggle="tooltip" data-placement="top" title="Delete"><em class="icon ni ni-trash"></em></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/inboxMessages}}
+                            </div>
+                            <div class="nk-ibx-view">
+                                <div class="nk-ibx-head">
+                                    <div class="nk-ibx-head-actions">
+                                        <ul class="nk-ibx-head-tools g-1">
+                                            <li class="ml-n2"><a href="#" class="btn btn-icon btn-trigger nk-ibx-hide"><em class="icon ni ni-arrow-left"></em></a></li>
+                                            <li><a href="#" data="receiver" class="btnDelete deleteMessage btn btn-icon btn-trigger btn-tooltip" title="Delete"><em class="icon ni ni-trash"></em></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="nk-ibx-reply nk-reply" data-simplebar>
+                                    <div class="nk-ibx-reply-group">
+                                        {{#inboxMessages}}
+                                        <div id="{{id}}" class="messageView nk-ibx-reply-item nk-reply-item">
+                                            <div class="nk-reply-header nk-ibx-reply-header">
+                                                <div class="nk-reply-desc">
+                                                    <div class="nk-reply-avatar user-avatar bg-blue">
+                                                        {{#hasPhoto}}
+                                                        <img src={{userPhoto}}>
+                                                        {{/hasPhoto}}
+                                                        {{^hasPhoto}}
+                                                        <span>{{userPhoto}}</span>
+                                                        {{/hasPhoto}}
+                                                    </div>
+                                                    <div class="nk-reply-info">
+                                                        <div class="nk-reply-author lead-text">{{department}}<span class="date d-sm-none">{{messageDate}}</span></div>
+                                                        <div class="nk-reply-msg-excerpt">{{{content}}}</div>
+                                                    </div>
+                                                </div>
+                                                <ul class="nk-reply-tools g-1">
+                                                    <li class="date-msg"><span class="date">{{messageDate}}</span></li>
+                                                    <li class="replyto-msg"><a href="#" id="{{id}}" class="replyMessage btn btn-trigger btn-icon btn-tooltip" title="Reply"><em class="icon ni ni-curve-up-left"></em></a></li>
+                                                    <li class="more-actions">
+                                                        <div class="dropdown">
+                                                            <a href="#" class="dropdown-toggle btn btn-trigger btn-icon" data-toggle="dropdown"><em class="icon ni ni-more-v"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li><a id="{{id}}" class="replyMessage dropdown-item" href="#"><em class="icon ni ni-reply-fill"></em><span>Reply to</span></a></li>
+                                                                    <li><a id="{{id}}" data="receiver" class="deleteMessage dropdown-item" href="#"><em class="icon ni ni-trash-fill"></em><span>Delete this</span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="nk-reply-body nk-ibx-reply-body">
+                                                <div class="nk-reply-entry entry">
+                                                    {{{content}}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/inboxMessages}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/hasInbox}}
+                            {{^hasInbox}}
+                            <p>You have no unread messages.</p>
+                            {{/hasInbox}}
+                        </div>
+                        <div id="draft">
+                            {{#hasDraft}}
+                            <div class="nk-ibx-list" data-simplebar>
+                                {{#draftMessages}}
+                                <div class="nk-ibx-item">
+                                    <a href="#" id="{{id}}" class="messageItem nk-ibx-link"></a>
+                                    <div class="nk-ibx-item-elem nk-ibx-item-user">
+                                        <div class="user-card">
+                                            <div class="user-avatar">
+                                                {{#hasPhoto}}
+                                                <img src={{userPhoto}}>
+                                                {{/hasPhoto}}
+                                                {{^hasPhoto}}
+                                                <span>{{userPhoto}}</span>
+                                                {{/hasPhoto}}
+                                            </div>
+                                            <div class="user-name">
+                                                <div class="lead-text">{{firstName}}&nbsp;{{lastName}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nk-ibx-item-elem nk-ibx-item-fluid">
+                                        <div class="nk-ibx-context-group">
+                                            <div class="nk-ibx-context">
+                                                <span class="nk-ibx-context-text">
+                                                    <span class="heading">{{title}}</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nk-ibx-item-elem">
+                                        <div class="sub-text">{{messageDate}}</div>
+                                    </div>
+                                    <div class="nk-ibx-item-elem nk-ibx-item-tools">
+                                        <div class="ibx-actions">
+                                            <ul class="ibx-actions-hidden gx-1">
+                                                <li><a href="#" id="{{id}}" data="sender" class="deleteMessage btn btn-sm btn-icon btn-trigger" data-toggle="tooltip" data-placement="top" title="Delete"><em class="icon ni ni-trash"></em></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/draftMessages}}
+                            </div>
+                            <div class="nk-ibx-view">
+                                <div class="nk-ibx-head">
+                                    <div class="nk-ibx-head-actions">
+                                        <ul class="nk-ibx-head-tools g-1">
+                                            <li class="ml-n2"><a href="#" class="btn btn-icon btn-trigger nk-ibx-hide"><em class="icon ni ni-arrow-left"></em></a></li>
+                                            <li><a href="#" data="sender" class="btnDelete deleteMessage btn btn-icon btn-trigger btn-tooltip" title="Delete"><em class="icon ni ni-trash"></em></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="nk-ibx-reply nk-reply" data-simplebar>
+                                    <div class="nk-ibx-reply-group">
+                                        {{#draftMessages}}
+                                        <div id="{{id}}" class="messageView nk-ibx-reply-item nk-reply-item">
+                                            <div class="nk-reply-header nk-ibx-reply-header">
+                                                <div class="nk-reply-desc">
+                                                    <div class="nk-reply-avatar user-avatar bg-blue">
+                                                        {{#hasPhoto}}
+                                                        <img src={{userPhoto}}>
+                                                        {{/hasPhoto}}
+                                                        {{^hasPhoto}}
+                                                        <span>{{userPhoto}}</span>
+                                                        {{/hasPhoto}}
+                                                    </div>
+                                                    <div class="nk-reply-info">
+                                                        <div class="nk-reply-author lead-text">{{firstName}}&nbsp;{{lastName}} <span class="date d-sm-none">{{messageDate}}</span></div>
+                                                        <div class="nk-reply-msg-excerpt">{{{content}}}</div>
+                                                        <div class="dropdown nk-reply-msg-info">
+                                                            <span class="sub-text">to {{department}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul class="nk-reply-tools g-1">
+                                                    <li class="date-msg"><span class="date">{{messageDate}}</span></li>
+                                                    <li class="replyto-msg"><a href="#" id="{{id}}" class="replyMessage btn btn-trigger btn-icon btn-tooltip" title="Reply"><em class="icon ni ni-curve-up-left"></em></a></li>
+                                                    <li class="more-actions">
+                                                        <div class="dropdown">
+                                                            <a href="#" class="dropdown-toggle btn btn-trigger btn-icon" data-toggle="dropdown"><em class="icon ni ni-more-v"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li><a id="{{id}}" class="replyMessage dropdown-item" href="#"><em class="icon ni ni-reply-fill"></em><span>Reply to</span></a></li>
+                                                                    <li><a id="{{id}}" data="sender" class="deleteMessage dropdown-item" href="#"><em class="icon ni ni-trash-fill"></em><span>Delete this</span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="nk-reply-body nk-ibx-reply-body">
+                                                <div class="nk-reply-entry entry">
+                                                    {{{content}}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/draftMessages}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/hasDraft}}
+                            {{^hasDraft}}
+                            <p>There is no draft message</p>
+                            {{/hasDraft}}
+                        </div>
+                        <div id="sent">
+                            {{#hasSent}}
+                            <div class="nk-ibx-list" data-simplebar>
+                                {{#sentMessages}}
+                                <div class="nk-ibx-item">
+                                    <a href="#" id="{{id}}" class="messageItem nk-ibx-link"></a>
+                                    <div class="nk-ibx-item-elem nk-ibx-item-user">
+                                        <div class="user-card">
+                                            <div class="user-avatar">
+                                                {{#hasPhoto}}
+                                                <img src={{userPhoto}}>
+                                                {{/hasPhoto}}
+                                                {{^hasPhoto}}
+                                                <span>{{userPhoto}}</span>
+                                                {{/hasPhoto}}
+                                            </div>
+                                            <div class="user-name">
+                                                <div class="lead-text">{{firstName}}&nbsp;{{lastName}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nk-ibx-item-elem nk-ibx-item-fluid">
+                                        <div class="nk-ibx-context-group">
+                                            <div class="nk-ibx-context">
+                                                <span class="nk-ibx-context-text">
+                                                    <span class="heading">{{title}}</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nk-ibx-item-elem">
+                                        <div class="sub-text">{{messageDate}}</div>
+                                    </div>
+                                    <div class="nk-ibx-item-elem nk-ibx-item-tools">
+                                        <div class="ibx-actions">
+                                            <ul class="ibx-actions-hidden gx-1">
+                                                <li><a href="#" id="{{id}}" data="sender" class="deleteMessage btn btn-sm btn-icon btn-trigger" data-toggle="tooltip" data-placement="top" title="Delete"><em class="icon ni ni-trash"></em></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/sentMessages}}
+                            </div>
+                            <div class="nk-ibx-view">
+                                <div class="nk-ibx-head">
+                                    <div class="nk-ibx-head-actions">
+                                        <ul class="nk-ibx-head-tools g-1">
+                                            <li class="ml-n2"><a href="#" class="btn btn-icon btn-trigger nk-ibx-hide"><em class="icon ni ni-arrow-left"></em></a></li>
+                                            <li><a href="#" data="sender" class="btnDelete deleteMessage btn btn-icon btn-trigger btn-tooltip" title="Delete"><em class="icon ni ni-trash"></em></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="nk-ibx-reply nk-reply" data-simplebar>
+                                    <div class="nk-ibx-reply-group">
+                                        {{#sentMessages}}
+                                        <div id="{{id}}" class="messageView nk-ibx-reply-item nk-reply-item">
+                                            <div class="nk-reply-header nk-ibx-reply-header">
+                                                <div class="nk-reply-desc">
+                                                    <div class="nk-reply-avatar user-avatar bg-blue">
+                                                        {{#hasPhoto}}
+                                                        <img src={{userPhoto}}>
+                                                        {{/hasPhoto}}
+                                                        {{^hasPhoto}}
+                                                        <span>{{userPhoto}}</span>
+                                                        {{/hasPhoto}}
+                                                    </div>
+                                                    <div class="nk-reply-info">
+                                                        <div class="nk-reply-author lead-text">{{firstName}}&nbsp;{{lastName}} <span class="date d-sm-none">{{messageDate}}</span></div>
+                                                        <div class="nk-reply-msg-excerpt">{{{content}}}</div>
+                                                        <div class="dropdown nk-reply-msg-info">
+                                                            <span class="sub-text">to {{department}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul class="nk-reply-tools g-1">
+                                                    <li class="date-msg"><span class="date">{{messageDate}}</span></li>
+                                                    <li class="replyto-msg"><a href="#" id="{{id}}" class="replyMessage btn btn-trigger btn-icon btn-tooltip" title="Reply"><em class="icon ni ni-curve-up-left"></em></a></li>
+                                                    <li class="more-actions">
+                                                        <div class="dropdown">
+                                                            <a href="#" class="dropdown-toggle btn btn-trigger btn-icon" data-toggle="dropdown"><em class="icon ni ni-more-v"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li><a id="{{id}}" class="replyMessage dropdown-item" href="#"><em class="icon ni ni-reply-fill"></em><span>Reply to</span></a></li>
+                                                                    <li><a id="{{id}}" data="sender" class="deleteMessage dropdown-item" href="#"><em class="icon ni ni-trash-fill"></em><span>Delete this</span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="nk-reply-body nk-ibx-reply-body">
+                                                <div class="nk-reply-entry entry">
+                                                    {{{content}}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/sentMessages}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/hasSent}}
+                            {{^hasSent}}
+                            <p>There is no sent message.</p>
+                            {{/hasSent}}
+                        </div>
+                        <div id="spam">
+                            <p>There is no spam message.</p>
+                        </div>
+                        <div id="trash">
+                            {{#hasTrash}}
+                            <div class="nk-ibx-list" data-simplebar>
+                                {{#trashMessages}}
+                                <div class="nk-ibx-item">
+                                    <a href="#" id="{{id}}" class="messageItem nk-ibx-link"></a>
+                                    <div class="nk-ibx-item-elem nk-ibx-item-user">
+                                        <div class="user-card">
+                                            <div class="user-avatar">
+                                                {{#hasPhoto}}
+                                                <img src={{userPhoto}}>
+                                                {{/hasPhoto}}
+                                                {{^hasPhoto}}
+                                                <span>{{userPhoto}}</span>
+                                                {{/hasPhoto}}
+                                            </div>
+                                            <div class="user-name">
+                                                <div class="lead-text">{{firstName}}&nbsp;{{lastName}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nk-ibx-item-elem nk-ibx-item-fluid">
+                                        <div class="nk-ibx-context-group">
+                                            <div class="nk-ibx-context">
+                                                <span class="nk-ibx-context-text">
+                                                    <span class="heading">{{title}}</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nk-ibx-item-elem">
+                                        <div class="sub-text">{{messageDate}}</div>
+                                    </div>
+                                </div>
+                                {{/trashMessages}}
+                            </div>
+                            <div class="nk-ibx-view">
+                                <div class="nk-ibx-head">
+                                    <div class="nk-ibx-head-actions">
+                                        <ul class="nk-ibx-head-tools g-1">
+                                            <li class="ml-n2"><a href="#" class="btn btn-icon btn-trigger nk-ibx-hide"><em class="icon ni ni-arrow-left"></em></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="nk-ibx-reply nk-reply" data-simplebar>
+                                    <div class="nk-ibx-reply-group">
+                                        {{#trashMessages}}
+                                        <div id="{{id}}" class="messageView nk-ibx-reply-item nk-reply-item">
+                                            <div class="nk-reply-header nk-ibx-reply-header">
+                                                <div class="nk-reply-desc">
+                                                    <div class="nk-reply-avatar user-avatar bg-blue">
+                                                        {{#hasPhoto}}
+                                                        <img src={{userPhoto}}>
+                                                        {{/hasPhoto}}
+                                                        {{^hasPhoto}}
+                                                        <span>{{userPhoto}}</span>
+                                                        {{/hasPhoto}}
+                                                    </div>
+                                                    <div class="nk-reply-info">
+                                                        <div class="nk-reply-author lead-text">{{firstName}}&nbsp;{{lastName}} <span class="date d-sm-none">{{messageDate}}</span></div>
+                                                        <div class="nk-reply-msg-excerpt">{{{content}}}</div>
+                                                    </div>
+                                                </div>
+                                                <ul class="nk-reply-tools g-1">
+                                                    <li class="date-msg"><span class="date">{{messageDate}}</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="nk-reply-body nk-ibx-reply-body">
+                                                <div class="nk-reply-entry entry">
+                                                    {{{content}}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/trashMessages}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/hasTrash}}
+                            {{^hasTrash}}
+                            <p>There is no trash message.</p>
+                            {{/hasTrash}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+
+    $('#inbox').show();
+    $('#draft').hide();
+    $('#sent').hide();
+    $('#spam').hide();
+    $('#trash').hide();
+
+    $('.messageType li').on('click', function() {
+        $('.messageType li').each(function() {
+            $(this).removeClass('active');
+            var id = $(this).attr('data');
+            $('#'+ id).hide();
+        });
+
+        $(this).addClass('active');
+        var id = $(this).attr('data');
+        $('#'+ id).show();
+        $('#'+ id +' .nk-ibx-hide').click();
+    });
+
+    $('.messageItem').on('click', function() {
+        var messageId = $(this).attr('id');
+        $('.messageView').each(function() {
+            if ($(this).attr('id') == messageId) {
+                $(this).show();
+                $(this).parents('.nk-ibx-view').find('.btnDelete ').attr('id', messageId);
+            }
+            else $(this).hide();
+        });
+    });
+
+    $('.deleteMessage').on('click', function() {
+        $.ajax({
+                url: '/messages',
+                type: 'POST',
+                data: {
+                    type: 'delete',
+                    userType: $(this).attr('data'),
+                    id: $(this).attr('id'),
+                },
+                success: function(data) {
+                    location.reload();
+                }
+            });
+    });
+
+    $('.replyMessage').on('click', function() {
+        $('#composeMessage').click();
+    });
+
+    /*$('#checkAll').on('click', function() {
+        var checked = $(this)[0].checked;
+        $('.nk-ibx-item input[type="checkbox"]').each(function() {
+            $(this)[0].checked = checked;
+        })
+    });*/
+});
+</script>
+{{/data}}

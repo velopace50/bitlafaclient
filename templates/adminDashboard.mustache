@@ -1,0 +1,128 @@
+{{#data}}
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-content-wrap">
+                    <div class="nk-block-head nk-block-head-lg">
+                        <div class="nk-block-between-md g-4">
+                            <div class="nk-block-head-content">
+                                <h2 class="nk-tle fw-normal">Client Accounts</h2>
+                                <div class="nk-block-des">
+                                    <p>You can add and remove users as you want.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nk-block">
+                        <div class="card-inner p-0">
+                            <div class="nk-tb-list nk-tb-ulist is-compact">
+                                <div class="nk-tb-item nk-tb-head">
+                                    <div class="nk-tb-col"><span class="sub-text">User</span></div>
+                                    <div class="nk-tb-col tb-col-md"><span class="sub-text">Deposit</span></div>
+                                    <div class="nk-tb-col tb-col-sm"><span class="sub-text">Balance</span></div>
+                                    <div class="nk-tb-col tb-col-md"><span class="sub-text">Return</span></div>
+                                    <div class="nk-tb-col tb-col-lg"><span class="sub-text">Account Type</span></div>
+                                    <div class="nk-tb-col tb-col-lg"><span class="sub-text">Date Joined</span></div>
+                                    <div class="nk-tb-col tb-col-lg"><span class="sub-text">Agent</span></div>
+                                    <div class="nk-tb-col"><span class="sub-text">Action</span></div>
+                                </div><!-- .nk-tb-item -->
+                                {{#users}}
+                                    <div class="nk-tb-item">
+                                        <div class="nk-tb-col">
+                                            <div class="user-card">
+                                                <div class="user-avatar xs bg-primary">
+                                                    {{#hasPhoto}}
+                                                        <img src={{userPhoto}}>
+                                                    {{/hasPhoto}}
+                                                    {{^hasPhoto}}
+                                                        <span>{{userPhoto}}</span>
+                                                    {{/hasPhoto}}
+                                                </div>
+                                                <div class="user-name">
+                                                    <span class="lead-text">{{firstName}} &nbsp; {{lastName}}</span>
+                                                    <span class="sub-text">{{email}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-md">
+                                            <span>{{initialInvestment}}</span>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-sm">
+                                            <span>{{currentBalance}}</span>
+                                        </div>
+
+                                        <div class="nk-tb-col tb-col-lg">
+                                            <span>{{totalprofit}}</span>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-md">
+                                            <span>{{accountType}}</span>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-lg">
+                                            <span>{{dateCreated}}</span>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-lg">
+                                            <span>{{agent}}</span>
+                                        </div>
+                                        <div class="nk-tb-col">
+                                            <div class="d-none d-md-inline">
+                                                <a href="/adminUserDetails?userId={{id}}" class="link link-sm"><span>Edit</span></a>
+                                                <a href="#" id="{{id}}" class="removeUser link link-sm link-danger"><span>Remove</span></a>
+                                            </div>
+                                        </div>
+                                    </div><!-- .nk-tb-item -->
+
+                                {{/users}}
+                            </div><!-- .nk-tb-list -->
+                        </div><!-- .card-inner -->
+                        <div class="card-inner">
+                            <ul class="pagination justify-content-center justify-content-md-start">
+                                <li class="page-item"><a class="page-link" href="./adminDashboard?page={{prev_page}}">Prev</a></li>
+                                {{#totalpages}}
+                                    <li class="page-item"><a class="page-link" href="./adminDashboard?page={{page}}">{{page}}</a></li>
+                                {{/totalpages}}
+                                <li class="page-item"><a class="page-link" href="./adminDashboard?page={{next_page}}">Next</a></li>
+                            </ul><!-- .pagination -->
+                        </div><!-- .card-inner -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="modal fade" id="myModaldeleteuser" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p style="text-align: center;">Do you want to remove this user?</p>
+                </div>
+                <div class="modal-footer" style="text-align: center;display: unset">
+                    <a class="deleteuserurl btn btn-primary" type="button" href="">Delete</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.tb-member-action .d-md-inline a {
+    font-size: 13px;
+    margin-right: 10px;
+}
+</style>
+
+<script>
+$(document).ready(function() {
+
+    $('.removeUser').on('click', function(){
+        $(".deleteuserurl").attr("href", "./adminUserDelete?userId="+ $(this).attr('id'));
+        $("#myModaldeleteuser").modal('show');
+    //     if (confirm('Do you want to remove this user?')) {
+    //         location.href = "/adminUserDelete?userId="+ $(this).attr('id');
+    //     }
+    });
+});
+</script>
+{{/data}}

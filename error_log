@@ -1,0 +1,96 @@
+[01-Apr-2022 10:53:22 UTC] PHP Fatal error:  Uncaught Error: Call to a member function loadTemplate() on null in /home/noorfxco/bitlafaclient.com/context.php:187
+Stack trace:
+#0 {main}
+  thrown in /home/noorfxco/bitlafaclient.com/context.php on line 187
+[22-Apr-2022 09:19:44 UTC] PHP Fatal error:  Uncaught Error: Class 'PHPMailer\PHPMailer\Exception' not found in /home/noorfxco/bitlafaclient.com/PHPMailer/PHPMailer.php:2089
+Stack trace:
+#0 /home/noorfxco/bitlafaclient.com/PHPMailer/PHPMailer.php(1900): PHPMailer\PHPMailer\PHPMailer->smtpConnect(Array)
+#1 /home/noorfxco/bitlafaclient.com/PHPMailer/PHPMailer.php(1614): PHPMailer\PHPMailer\PHPMailer->smtpSend('Date: Fri, 22 A...', 'This is a multi...')
+#2 /home/noorfxco/bitlafaclient.com/PHPMailer/PHPMailer.php(1447): PHPMailer\PHPMailer\PHPMailer->postSend()
+#3 /home/noorfxco/bitlafaclient.com/context.php(501): PHPMailer\PHPMailer\PHPMailer->send()
+#4 /home/noorfxco/bitlafaclient.com/context.php(58): getData('forgotPassword')
+#5 /home/noorfxco/bitlafaclient.com/index.php(26): include('/home/noorfxco/...')
+#6 {main}
+  thrown in /home/noorfxco/bitlafaclient.com/PHPMailer/PHPMailer.php on line 2089
+[22-Apr-2022 09:19:50 UTC] PHP Fatal error:  Uncaught Error: Class 'PHPMailer\PHPMailer\Exception' not found in /home/noorfxco/bitlafaclient.com/PHPMailer/PHPMailer.php:2089
+Stack trace:
+#0 /home/noorfxco/bitlafaclient.com/PHPMailer/PHPMailer.php(1900): PHPMailer\PHPMailer\PHPMailer->smtpConnect(Array)
+#1 /home/noorfxco/bitlafaclient.com/PHPMailer/PHPMailer.php(1614): PHPMailer\PHPMailer\PHPMailer->smtpSend('Date: Fri, 22 A...', 'This is a multi...')
+#2 /home/noorfxco/bitlafaclient.com/PHPMailer/PHPMailer.php(1447): PHPMailer\PHPMailer\PHPMailer->postSend()
+#3 /home/noorfxco/bitlafaclient.com/context.php(501): PHPMailer\PHPMailer\PHPMailer->send()
+#4 /home/noorfxco/bitlafaclient.com/context.php(58): getData('forgotPassword')
+#5 /home/noorfxco/bitlafaclient.com/index.php(26): include('/home/noorfxco/...')
+#6 {main}
+  thrown in /home/noorfxco/bitlafaclient.com/PHPMailer/PHPMailer.php on line 2089
+[14-Sep-2022 17:58:08 UTC] PHP Fatal error:  Uncaught ValueError: Unknown format specifier "i" in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php:604
+Stack trace:
+#0 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(604): sprintf('version:%s,esca...', '2.7.0', 'custom', 2, 'ISO-8859-1', 'true', 'FILTERS', '<div class="nk-...')
+#1 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(689): Mustache_Engine->getTemplateClassName('<div class="nk-...')
+#2 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(617): Mustache_Engine->loadSource('<div class="nk-...')
+#3 /home/cointrad/public_html/cointraderclient.com/context.php(188): Mustache_Engine->loadTemplate('login')
+#4 /home/cointrad/public_html/cointraderclient.com/index.php(30): include('/home/cointrad/...')
+#5 {main}
+  thrown in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php on line 604
+[14-Sep-2022 17:58:31 UTC] PHP Fatal error:  Uncaught ValueError: Unknown format specifier "i" in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php:604
+Stack trace:
+#0 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(604): sprintf('version:%s,esca...', '2.7.0', 'custom', 2, 'ISO-8859-1', 'true', 'FILTERS', '<div class="nk-...')
+#1 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(689): Mustache_Engine->getTemplateClassName('<div class="nk-...')
+#2 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(617): Mustache_Engine->loadSource('<div class="nk-...')
+#3 /home/cointrad/public_html/cointraderclient.com/context.php(188): Mustache_Engine->loadTemplate('login')
+#4 /home/cointrad/public_html/cointraderclient.com/index.php(30): include('/home/cointrad/...')
+#5 {main}
+  thrown in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php on line 604
+[14-Sep-2022 19:54:36 UTC] PHP Fatal error:  Uncaught ValueError: Unknown format specifier "i" in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php:604
+Stack trace:
+#0 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(604): sprintf('version:%s,esca...', '2.7.0', 'custom', 2, 'ISO-8859-1', 'true', 'FILTERS', '<div class="nk-...')
+#1 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(689): Mustache_Engine->getTemplateClassName('<div class="nk-...')
+#2 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(617): Mustache_Engine->loadSource('<div class="nk-...')
+#3 /home/cointrad/public_html/cointraderclient.com/context.php(188): Mustache_Engine->loadTemplate('login')
+#4 /home/cointrad/public_html/cointraderclient.com/index.php(30): include('/home/cointrad/...')
+#5 {main}
+  thrown in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php on line 604
+[14-Sep-2022 19:55:28 UTC] PHP Fatal error:  Uncaught ValueError: Unknown format specifier "i" in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php:604
+Stack trace:
+#0 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(604): sprintf('version:%s,esca...', '2.7.0', 'custom', 2, 'ISO-8859-1', 'true', 'FILTERS', '<div class="nk-...')
+#1 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(689): Mustache_Engine->getTemplateClassName('<div class="nk-...')
+#2 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(617): Mustache_Engine->loadSource('<div class="nk-...')
+#3 /home/cointrad/public_html/cointraderclient.com/context.php(188): Mustache_Engine->loadTemplate('login')
+#4 /home/cointrad/public_html/cointraderclient.com/index.php(30): include('/home/cointrad/...')
+#5 {main}
+  thrown in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php on line 604
+[14-Sep-2022 19:56:05 UTC] PHP Fatal error:  Uncaught ValueError: Unknown format specifier "i" in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php:604
+Stack trace:
+#0 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(604): sprintf('version:%s,esca...', '2.7.0', 'custom', 2, 'ISO-8859-1', 'true', 'FILTERS', '<div class="nk-...')
+#1 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(689): Mustache_Engine->getTemplateClassName('<div class="nk-...')
+#2 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(617): Mustache_Engine->loadSource('<div class="nk-...')
+#3 /home/cointrad/public_html/cointraderclient.com/context.php(188): Mustache_Engine->loadTemplate('login')
+#4 /home/cointrad/public_html/cointraderclient.com/index.php(30): include('/home/cointrad/...')
+#5 {main}
+  thrown in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php on line 604
+[14-Sep-2022 19:56:07 UTC] PHP Fatal error:  Uncaught ValueError: Unknown format specifier "i" in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php:604
+Stack trace:
+#0 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(604): sprintf('version:%s,esca...', '2.7.0', 'custom', 2, 'ISO-8859-1', 'true', 'FILTERS', '<div class="nk-...')
+#1 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(689): Mustache_Engine->getTemplateClassName('<div class="nk-...')
+#2 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(617): Mustache_Engine->loadSource('<div class="nk-...')
+#3 /home/cointrad/public_html/cointraderclient.com/context.php(188): Mustache_Engine->loadTemplate('login')
+#4 /home/cointrad/public_html/cointraderclient.com/index.php(30): include('/home/cointrad/...')
+#5 {main}
+  thrown in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php on line 604
+[14-Sep-2022 19:56:08 UTC] PHP Fatal error:  Uncaught ValueError: Unknown format specifier "i" in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php:604
+Stack trace:
+#0 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(604): sprintf('version:%s,esca...', '2.7.0', 'custom', 2, 'ISO-8859-1', 'true', 'FILTERS', '<div class="nk-...')
+#1 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(689): Mustache_Engine->getTemplateClassName('<div class="nk-...')
+#2 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(617): Mustache_Engine->loadSource('<div class="nk-...')
+#3 /home/cointrad/public_html/cointraderclient.com/context.php(188): Mustache_Engine->loadTemplate('login')
+#4 /home/cointrad/public_html/cointraderclient.com/index.php(30): include('/home/cointrad/...')
+#5 {main}
+  thrown in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php on line 604
+[14-Sep-2022 19:56:59 UTC] PHP Fatal error:  Uncaught ValueError: Unknown format specifier "i" in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php:604
+Stack trace:
+#0 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(604): sprintf('version:%s,esca...', '2.7.0', 'custom', 2, 'ISO-8859-1', 'true', 'FILTERS', '<div class="nk-...')
+#1 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(689): Mustache_Engine->getTemplateClassName('<div class="nk-...')
+#2 /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php(617): Mustache_Engine->loadSource('<div class="nk-...')
+#3 /home/cointrad/public_html/cointraderclient.com/context.php(188): Mustache_Engine->loadTemplate('login')
+#4 /home/cointrad/public_html/cointraderclient.com/index.php(30): include('/home/cointrad/...')
+#5 {main}
+  thrown in /home/cointrad/public_html/cointraderclient.com/Classes/Mustache/Engine.php on line 604

@@ -1,0 +1,259 @@
+<div class="nk-wrap nk-wrap-nosidebar">
+    <div class="nk-content ">
+        <div class="nk-split nk-split-page nk-split-md">
+            <div class="nk-split-content nk-block-area nk-block-area-column nk-auth-container bg-white">
+                <div class="absolute-top-right d-lg-none p-3 p-sm-5">
+                    <a href="#" class="toggle btn-white btn btn-icon btn-light" data-target="athPromo"><em class="icon ni ni-info"></em></a>
+                </div>
+                <div class="nk-block nk-block-middle nk-auth-body">
+                    <div class="brand-logo pb-5">
+                        <a href="/login" class="logo-link">
+                            <img class="logo-light logo-img logo-img-lg" src="./assets/images/logo.png" srcset="./assets/images/logo2x.png 2x" alt="logo">
+                            <img class="logo-dark logo-img logo-img-lg" src="./assets/images/logo-dark.png" srcset="./assets/images/logo-dark2x.png 2x" alt="logo-dark">
+                        </a>
+                    </div>
+                    <div class="nk-block-head">
+                        <div class="nk-block-head-content">
+                            <!--<h5 class="nk-block-title">Sign-In</h5>-->
+                            <div class="nk-block-des">
+                                <p>Access your CoinTrader24 account using your email and password</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="login" action="/login" method="post">
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <label class="form-label" for="email">Email</label>
+                            </div>
+                            <input type="text" class="form-control form-control-lg" name="email" id="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <label class="form-label" for="password">Password</label>
+                                <a href="#" class="link link-primary link-sm" data-dismiss="modal" data-toggle="modal" data-target="#resetPasswordModal">Forgot Password?</a>
+                            </div>
+                            <div class="form-control-wrap">
+                                <a tabindex="-1" href="#" class="form-icon form-icon-right passcode-switch" data-target="password">
+                                    <em class="passcode-icon icon-show icon ni ni-eye"></em>
+                                    <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
+                                </a>
+                                <input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="Enter your passcode" required>
+                            </div>
+                        </div>
+                        {{#data.loginFailed}}
+                        <div class="form-group example-alert">
+                            <div class="alert alert-danger alert-icon alert-dismissible">
+                                <em class="icon ni ni-cross-circle"></em> Your email or password is incorrect. <button class="close" data-dismiss="alert"></button>
+                            </div>
+                        </div>
+                        {{/data.loginFailed}}
+                        {{#data.expireUser}}
+                        <div class="form-group example-alert">
+                            <div class="alert alert-danger alert-icon alert-dismissible">
+                                <em class="icon ni ni-cross-circle"></em> Your account has expired, please contact support. <button class="close" data-dismiss="alert"></button>
+                            </div>
+                        </div>
+                        {{/data.expireUser}}
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+                        </div>
+                    </form>
+                    <div class="form-note-s2 pt-4">
+                        <a href="./register" class="btn btn-lg btn-info btn-block">Open Account</a>
+                    </div>
+                </div>
+                <div class="nk-block nk-auth-footer">
+                    <div class="nk-block-between">
+                        <ul class="nav nav-sm">
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://cointraderclient.com/terms-of-service/"target="_blank">Terms of Service</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://cointraderclient.com/privacy-policy/"target="_blank">Privacy Policy</a>
+                                  <li class="nav-item">
+                                <a class="nav-link" href="https://cointraderclient.com/faq/"target="_blank">FAQ</a>
+                            </li>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-3">
+                        <p>&copy; 2022 CoinTrader24 Group. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nk-split-content nk-split-stretch bg-lighter d-flex toggle-break-lg toggle-slide toggle-slide-right" data-content="athPromo" data-toggle-screen="lg" data-toggle-overlay="true">
+                <div class="slider-wrap w-100 w-max-550px p-3 p-sm-5 m-auto">
+                    <div class="slider-init">
+                        <div class="slider-item">
+                            <div class="nk-feature nk-feature-center">
+                                <div class="nk-feature-img">
+                                    <img class="round" src="./assets/images/slides/promo-a.png" srcset="./assets/images/slides/promo-a2x.png 2x" alt="">
+                                </div>
+                                <div class="nk-feature-content py-4 p-sm-5">
+                                    <h4>CoinTrader24 Online</h4>
+                                    <p>Your money works harder and smarter with <br>The CoinTrader24 Group.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="DisplayPasswordSentConfirmation">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross"></em></a>
+            <div class="modal-body modal-body-lg text-center">
+                <div class="nk-modal">
+                    <h4 class="nk-modal-title">Reset Your Password</h4>
+                    <div class="nk-modal-text">
+                        <div class="caption-text" id="successSendRequest">Your password reset email should arrive shortly.</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="DisplayPasswordChangedConfirmation">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross"></em></a>
+            <div class="modal-body modal-body-lg text-center">
+                <div class="nk-modal">
+                    <h4 class="nk-modal-title">Reset Your Password</h4>
+                    <div class="nk-modal-text">
+                        <div class="caption-text" id="successSendRequest">Your password has been changed successfully.</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="resetPasswordModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross"></em></a>
+            <div class="modal-body modal-body-lg text-center">
+                <div class="nk-modal">
+                    <h4 class="nk-modal-title">Reset Your Password</h4>
+                    <div class="form-group" id="PassInp1">
+                        <div class="form-label-group">
+                            <label class="form-label" for="clientEmail">Email</label>
+                        </div>
+                        <input type="email" class="form-control form-control-lg" id="clientEmail" autocomplete="off" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="nk-modal-text">
+                        <div class="caption-text" id="successSendRequest" style="display: none;">Your password reset email should arrive shortly.</div>
+                    </div>
+                    <div class="nk-modal-action">
+                        <a href="#" id="sendResetPassword" class="btn btn-lg btn-mw btn-primary" data-dismiss="modal">Send Password Reset Email</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="btnNewPassword" data-dismiss="modal" data-toggle="modal" data-target="#newPasswordModal"></a>
+<div class="modal fade" tabindex="-1" id="newPasswordModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" id="closeNewPasswordModal" data-dismiss="modal"><em class="icon ni ni-cross"></em></a>
+            <div class="modal-body modal-body-lg text-center">
+                <div class="nk-modal">
+                    <h4 class="nk-modal-title">Reset Password</h4>
+                    <div class="form-group" id="PassInp">
+                        <div class="form-label-group">
+                            <label class="form-label" for="forgotNewPassword">New Password</label>
+                        </div>
+                        <input type="password" class="form-control form-control-lg" id="forgotNewPassword" autocomplete="off" placeholder="Enter your new password" required>
+                    </div>
+                    <div class="nk-modal-text">
+                        <div class="caption-text" id="successSaveNewPassword" style="display: none;">Your Email and new password should arrive shortly.</div>
+                    </div>
+                    <div class="nk-modal-action">
+                        <a href="#" id="saveNewPassword"   class="btn btn-lg btn-mw btn-primary" >Save New Password</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function HideFirst()
+{
+    
+    jQuery('#successSaveNewPassword').show();
+    jQuery('#PassInp').remove();
+
+    jQuery('#saveNewPassword1').click();
+}
+$(document).ready(function() {
+
+    $('#sendResetPassword').on('click', function() {
+
+        if ($('#clientEmail').val()) {
+            $.ajax({
+                url: '/forgotPassword',
+                method: 'POST',
+                data: {
+                    type: 'request',
+                    email: $('#clientEmail').val(),
+                },
+                success: function(data) {
+                    if (data == 0) alert('This account is not exits.');
+                    else if (data == 1) 
+                    {
+                    
+                        $('#DisplayPasswordSentConfirmation').modal('show');
+                        /*jQuery('#successSendRequest').show();
+                        jQuery('#PassInp1').remove();
+                        jQuery('#sendResetPassword').remove();
+                        $('#resetPasswordModal').modal('show');*/
+                    }
+                }
+            })
+        } else {
+            alert('Please input your email address!');
+            $('#clientEmail').focus();
+        }
+        
+    });
+    
+    var bpg$1497 = "{{#data}}{{email}}{{/data}}";
+    $('#saveNewPassword').on('click', function() {
+        if ($('#forgotNewPassword').val()) {
+            $.ajax({
+                url: '/forgotPassword',
+                method: 'POST',
+                data: {
+                    type: 'newPassword',
+                    password: $('#forgotNewPassword').val(),
+                    bpg$1497: bpg$1497,
+                },
+                success: function(data) {
+                    if (data == 0) alert('This account is not exits.');
+                    else if (data == 1) {
+                        $('#newPasswordModal').modal('hide');
+                        $('#DisplayPasswordChangedConfirmation').modal('show');
+                    }
+                }
+            })
+        } else {
+            alert('Please input new password!');
+            $('#forgotNewPassword').focus();
+        }
+    });
+
+    {{#data.newPassword}}
+    $('#btnNewPassword').click();
+    {{/data.newPassword}}
+});
+</script>

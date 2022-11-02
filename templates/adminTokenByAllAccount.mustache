@@ -1,0 +1,181 @@
+{{#data}}
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-content-wrap">
+                    <div class="nk-block-head nk-block-head-lg">
+                        <div class="nk-block-between-md g-4">
+                            <div class="nk-block-head-content">
+                                <h2 class="nk-block-title fw-normal">Setting Token Amount  &&  Token Price</h2>
+                                <div class="nk-block-des">
+                                    <p>You can edit token price across all accounts and edit token amounts on individual accounts as you want.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nk-block">
+                        <div class="card card-bordered">
+                            <div class="card-inner">
+                            
+                                <div class="preview-block">
+                                    {{#insertedTrade}}
+                                    <div class="form-group example-alert">
+                                        <div class="alert alert-success alert-icon alert-dismissible">
+                                            <em class="icon ni ni-check-circle"></em> Token price across all accounts have been update. <button class="close" data-dismiss="alert"></button>
+                                        </div>
+                                    </div>
+                                    {{/insertedTrade}}
+                                    <form method="post" action="/adminTokenByAllAccount" enctype="multipart/form-data" class="row gy-3">
+                                        {{#tokens}}
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="form-control-wrap">
+                                                    <input type="text"  id="tokenDate" value={{updated_at}} name="tokenDate" class="date-picker form-control form-control-lg form-control-outlined" autocomplete="off" data-date-format="dd-mm-yyyy" required>
+                                                    <label class="form-label-outlined" for="tokenDate">Token Date</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="form-control-wrap">
+                                                    <select id="tokenType" name="tokenType" class="form-select form-control form-control-lg" data-ui="lg" required>
+                                                        <option value={{token_type}}>{{token_type}}</option>
+                                                    </select>
+                                                    <label class="form-label-outlined" for="tokenType">Token Type</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group tokenPrice">
+                                                <div class="form-control-wrap">
+                                                    <input type="text" min="0" id="tokenPrice" value={{token_price}} name="tokenPrice" class="form-control form-control-lg form-control-outlined" required>
+                                                    <label class="form-label-outlined" for="tokenPrice">Token Price</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                        
+                                             <input type="submit" name="updateTokenInfo" class="btn btn-primary"
+                                            value="Update Token Price">
+                                        </div>
+                                        {{/tokens}}
+                                    </form>
+                                </div>
+                            </div>
+                          </div> 
+
+
+
+                        
+                        <div class="card card-bordered">
+                            {{#isUserList}}
+                            <table class="table table-member">
+                                <thead class="tb-member-head thead-light">
+                                    <tr class="tb-member-item">
+                                        <th class="tb-member-info">
+                                            <span class="overline-title">User</span>
+                                        </th>
+                                        <th class="tb-member-type tb-col-sm">
+                                            <span class="overline-title">Token Name</span>
+                                        </th>
+                                        <th class="tb-member-role tb-col-md">
+                                            <span class="overline-title">Token Amount</span>
+                                        </th>
+                                        <th class="tb-member-action">
+                                            <span class="overline-title">Action</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tb-member-body">
+                                    {{#users}}
+                                    <tr class="tb-member-item">
+                                        <td class="tb-member-info">
+                                            <div class="user-card">
+                                                <div class="user-avatar bg-primary">
+                                                    {{#hasPhoto}}
+                                                    <img src={{userPhoto}}>
+                                                    {{/hasPhoto}}
+                                                    {{^hasPhoto}}
+                                                    <span>{{userPhoto}}</span>
+                                                    {{/hasPhoto}}
+                                                </div>
+                                                <div class="user-info">
+                                                    <span class="lead-text">{{firstName}} &nbsp; {{lastName}}</span>
+                                                    <span class="sub-text">{{email}}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="tb-member-type tb-col-sm">
+                                            <span>{{tokenName}}</span>
+                                        </td>
+                                        <td class="tb-member-role tb-col-md">
+                                            <span>{{tokenAmount}}</span>
+                                        </td>
+                                        <td class="tb-member-action">
+                                            <div class="d-none d-md-inline">
+                                                <a href="/adminTokenByAllAccount?userId={{id}}" class="link link-sm"><span>Edit Trade</span></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {{/users}}
+                                    {{^users}}
+                                    <tr class="tb-member-item">
+                                        <td colspan=4 style="text-align: center">There is no user.</td>
+                                    </tr>
+                                    {{/users}}
+                                </tbody>
+                            </table>
+                            {{/isUserList}}
+
+                           
+
+                            {{#tokenInfo}}
+                            <div class="card-inner">
+                                <div class="preview-block">
+                                    <form method="post" action="/adminTokenByAllAccount" enctype="multipart/form-data" class="row gy-3">
+                                        <input type="hidden" name="id" value="{{id}}">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="form-control-wrap">
+                                                    <select id="tokenType" name="tokenType" class="form-select form-control form-control-lg" data-ui="lg" required>
+                                                        <option value={{tokenName}}>{{tokenName}}</option>
+                                                    </select>
+                                                    <label class="form-label-outlined" for="tokenType">Token Type</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="form-control-wrap">
+                                                    <input type="text" id="tokenAmount" value="{{tokenAmount}}" name="tokenAmount" class="form-control form-control-lg form-control-outlined">
+                                                    <label class="form-label-outlined" for="tokenAmount">Token Amount</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="submit" name="updateTokenAmount" class="btn btn-primary"
+                                            value="Update Token Amount">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            {{/tokenInfo}}
+                        </div>   
+
+                          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.tb-member-action .d-md-inline a {
+    font-size: 13px;
+    margin-right: 10px;
+}
+</style>
+
+{{/data}}
